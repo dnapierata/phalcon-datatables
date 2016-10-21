@@ -88,7 +88,7 @@ class ArrayAdapter extends AdapterInterface {
       $items = array_slice($items, $offset);
     }
 
-    if ($limit) {
+    if ($limit > 0) {
       $items = array_slice($items, 0, $limit);
     }
 
