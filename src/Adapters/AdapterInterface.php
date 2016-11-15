@@ -75,9 +75,11 @@ abstract class AdapterInterface {
         if (!mb_strlen($search)) return;
         
         $search = array_diff(explode(' ', $search), ['']);
-        foreach($this->parser->getSearchableColumns() as $column) {
-          if (!$this->columnExists($column)) continue;
-          $closure($column, $this->sanitaze($search));
+        foreach($search as $term) {
+          foreach($this->parser->getSearchableColumns() as $column) {
+            if (!$this->columnExists($column)) continue;
+            $closure($column, $this->sanitaze($term));
+          }
         }
         break;
       case "column_search":
