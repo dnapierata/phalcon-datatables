@@ -38,7 +38,7 @@ class ArrayAdapter extends AdapterInterface {
           $match = [];
           foreach($this->global as $column=>$filters) {
             $c = count($filters);
-            foreach($filters as $search) {
+            foreach($filters as $i=>$search) {
               if(!isset($match[$i]) && stripos($item[$column], $search) !== false)
                 $match[$i] = true;
             }
