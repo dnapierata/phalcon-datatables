@@ -35,12 +35,15 @@ class ArrayAdapter extends AdapterInterface {
         $check = false;
 
         if (count($this->global)) {
+          $match = [];
           foreach($this->global as $column=>$filters) {
+            $c = count($filters);
             foreach($filters as $search) {
-              $check = (stripos($item[$column], $search) !== false);
-              if ($check) break 2;
+              if(!isset($match[$i]) && stripos($item[$column], $search) !== false)
+                $match[$i] = true;
             }
           }
+          $check = (count($match) >= $c);
         } else {
           $check = true;
         }
