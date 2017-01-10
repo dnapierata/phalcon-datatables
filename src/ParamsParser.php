@@ -79,4 +79,9 @@ class ParamsParser extends Component{
   public function getSearchValue() {
     return isset($this->params['search']['value']) ? $this->params['search']['value'] : '';
   }
+  
+  public function setLimit($limit) {
+      $this->params['length'] = $limit;
+      return $this;
+  }
 }
